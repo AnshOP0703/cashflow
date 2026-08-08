@@ -4,15 +4,21 @@ import { cn } from "@/lib/utils";
 // TODO(backend): wire this to Lovable Cloud (Supabase) — insert { email } into a
 // `waitlist` table here. Until then submissions are kept in local state + logged.
 export function WaitlistForm({
-  variant = "light",
+  variant = "dark",
   id = "waitlist",
+  submitLabel = "Join the waitlist",
+  microcopy = "Free during beta. No card required.",
 }: {
-  variant?: "light" | "onAccent";
+  variant?: "dark" | "onAccent";
   id?: string;
+  submitLabel?: string;
+  microcopy?: string | null;
 }) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+
+  const onAccent = variant === "onAccent";
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -26,17 +32,15 @@ export function WaitlistForm({
     setDone(true);
   }
 
-  const onAccent = variant === "onAccent";
-
   if (done) {
     return (
       <p
         role="status"
         className={cn(
-          "rounded-lg border px-4 py-3 text-sm font-medium",
+          "rounded-lg border px-4 py-3 text-sm",
           onAccent
-            ? "border-ink/20 bg-ink text-ink-foreground"
-            : "border-border bg-secondary text-foreground",
+            ? "border-background/25 bg-background text-foreground"
+            : "border-border bg-card text-foreground",
         )}
       >
         You're on the list. We'll email you when Tagada opens up.
@@ -61,28 +65,41 @@ export function WaitlistForm({
           aria-describedby={error ? `${id}-error` : undefined}
           className={cn(
             "h-12 w-full flex-1 rounded-lg border px-4 text-base outline-none transition-colors",
-            "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            "focus-visible:ring-2 focus-visible:ring-offset-2",
             onAccent
-              ? "border-ink/25 bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-ink"
-              : "border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-ring",
+              ? "border-background/25 bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-background focus-visible:ring-offset-primary"
+              : "border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-ring focus-visible:ring-offset-background",
           )}
         />
         <button
           type="submit"
           className={cn(
-            "h-12 shrink-0 rounded-lg px-6 text-base font-semibold transition outline-none",
-            "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            "h-12 shrink-0 rounded-lg px-7 text-base font-semibold transition outline-none",
+            "focus-visible:ring-2 focus-visible:ring-offset-2",
             onAccent
-              ? "bg-ink text-ink-foreground hover:bg-ink/90 focus-visible:ring-ink"
-              : "bg-primary text-primary-foreground hover:brightness-95 focus-visible:ring-ring",
+              ? "bg-background text-foreground hover:bg-background/90 focus-visible:ring-background focus-visible:ring-offset-primary"
+              : "bg-primary text-primary-foreground hover:-translate-y-px hover:brightness-110 focus-visible:ring-ring focus-visible:ring-offset-background",
           )}
         >
-          Join the waitlist
+          {submitLabel}
         </button>
       </div>
       {error && (
-        <p id={`${id}-error`} className="mt-2 text-sm font-medium text-destructive">
+        <p
+          id={`${id}-error`}
+          className={cn("mt-2 text-sm", onAccent ? "text-primary-foreground" : "text-destructive")}
+        >
           {error}
+        </p>
+      )}
+      {microcopy && (
+        <p
+          className={cn(
+            "mt-3 text-sm",
+            onAccent ? "text-primary-foreground/80" : "text-muted-foreground",
+          )}
+        >
+          {microcopy}
         </p>
       )}
     </form>
