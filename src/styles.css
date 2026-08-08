@@ -19,6 +19,10 @@
  */
 
 @theme inline {
+  --font-sans: var(--font-sans);
+  --color-band: var(--band);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -147,5 +151,47 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.03em;
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding-inline: 1.25rem;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+  }
+  .reveal-in {
+    animation: rise-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-in {
+      opacity: 1;
+      animation: none;
+    }
   }
 }
