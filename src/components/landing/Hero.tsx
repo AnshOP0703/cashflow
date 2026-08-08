@@ -23,15 +23,15 @@ export function Hero() {
           until the money lands. You do nothing.
         </p>
         <div id="waitlist" className="mt-8 max-w-md scroll-mt-24">
-          <WaitlistForm id="hero" />
-          <p className="mt-3 text-sm text-muted-foreground">
-            Free during beta. India and global. No card required.
-          </p>
+          <WaitlistForm
+            id="hero"
+            microcopy="Free during beta. India and global. No card required."
+          />
         </div>
       </Reveal>
 
       <Reveal delay={120} className="lg:pl-6">
-        <div className="rounded-lg border border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-7">
+        <div className="rounded-lg border border-border bg-card p-5 sm:p-7">
           <article aria-label="Example overdue invoice">
             <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border pb-4">
               <div>
@@ -61,9 +61,9 @@ export function Hero() {
               ))}
               <li className="flex items-center gap-4">
                 <span aria-hidden="true" className="flex w-4 justify-center">
-                  <span className="size-2.5 rounded-full bg-primary" />
+                  <span className="size-2.5 rounded-full bg-success" />
                 </span>
-                <span className="rounded-md bg-primary px-3 py-1 text-sm font-bold tracking-wide text-primary-foreground">
+                <span className="rounded-md bg-success px-3 py-1 text-sm font-semibold tracking-wide text-success-foreground">
                   PAID
                 </span>
                 <span className="text-sm text-muted-foreground">Chase stops automatically</span>

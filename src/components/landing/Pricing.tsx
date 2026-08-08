@@ -55,7 +55,7 @@ export function Pricing() {
               onClick={() => setCurrency(c)}
               className={cn(
                 "rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-                currency === c ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground",
+                currency === c ? "bg-secondary text-foreground" : "text-muted-foreground hover:text-foreground",
               )}
             >
               {c === "INR" ? "INR ₹" : "USD $"}
@@ -70,7 +70,7 @@ export function Pricing() {
             <article
               className={cn(
                 "flex h-full flex-col rounded-lg border bg-card p-7",
-                t.popular ? "border-primary shadow-[var(--shadow-soft)]" : "border-border",
+                t.popular ? "border-primary" : "border-border",
               )}
             >
               <div className="flex items-center justify-between gap-3">
@@ -102,11 +102,11 @@ export function Pricing() {
                 className={cn(
                   "mt-8 rounded-lg px-4 py-3 text-center text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
                   t.popular
-                    ? "bg-foreground text-background hover:opacity-90"
+                    ? "bg-primary text-primary-foreground hover:brightness-110"
                     : "border border-border hover:bg-secondary",
                 )}
               >
-                Join the waitlist
+                Claim your spot
               </a>
             </article>
           </Reveal>

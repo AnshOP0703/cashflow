@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#how-it-works", label: "How it works" },
+  { href: "#features", label: "Features" },
   { href: "#pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -21,7 +22,7 @@ export function Nav() {
     <header
       className={cn(
         "sticky top-0 z-50 transition-colors duration-300",
-        solid ? "border-b border-border bg-background/90 backdrop-blur" : "bg-transparent",
+        solid ? "border-b border-border bg-background/85 shadow-[var(--shadow-soft)] backdrop-blur" : "bg-transparent",
       )}
     >
       <nav
@@ -49,7 +50,13 @@ export function Nav() {
           </ul>
           <a
             href="#waitlist"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:brightness-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+            className="hidden rounded px-2 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:inline-block"
+          >
+            Sign in
+          </a>
+          <a
+            href="#waitlist"
+            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:-translate-y-px hover:brightness-110 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
           >
             Get early access
           </a>
