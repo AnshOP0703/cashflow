@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
 import { cn } from "@/lib/utils";
+import { CtaLink } from "./Cta";
 
 const tones = {
   Gentle: {
@@ -86,6 +87,7 @@ export function ChaseEngine() {
             <p className="mt-3 font-semibold">{tones[tone].subject}</p>
             <p className="mt-3 leading-relaxed text-ink-foreground/75">{tones[tone].body}</p>
           </div>
+          <CtaLink className="mt-8" label="Start chasing automatically" />
         </Reveal>
       </div>
     </section>

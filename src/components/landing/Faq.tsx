@@ -12,8 +12,12 @@ export const faqs = [
     a: "No. Tagada is built for business owners who are not accountants and do not want to become one. You enter line items and a client, and Tagada handles tax calculation, numbering, and the payment record behind the scenes.",
   },
   {
-    q: "Will the reminders annoy my clients?",
+    q: "Will the automated reminders annoy my clients?",
     a: "Reminder frequency and tone are set by you, and Tagada starts polite by default. Every reminder stops automatically the moment the invoice is paid, so no client ever gets chased for money they already sent.",
+  },
+  {
+    q: "Can I control the tone and timing of every message?",
+    a: "Yes. You choose how many days pass between each reminder and whether the message reads gentle, standard, or firm, and you can override the copy on any individual invoice. Tagada never sends anything you have not approved as a cadence first.",
   },
   {
     q: "Does it handle GST?",
@@ -24,8 +28,12 @@ export const faqs = [
     a: "Razorpay and UPI for India, and Stripe and PayPal for the US and the rest of the world. Every invoice carries a pay-now link, so a client can settle it in two clicks without creating an account.",
   },
   {
-    q: "Can I import invoices from Zoho or Excel?",
+    q: "Can I import invoices from Zoho, Tally, or Excel?",
     a: "Yes. Tagada imports existing invoices and clients from a CSV or Excel export, including files exported from Zoho Invoice, Wave, and FreshBooks. Outstanding invoices carry their due dates over, so the chase engine can pick them up immediately.",
+  },
+  {
+    q: "Does it work outside India?",
+    a: "Yes. Tagada supports multi-currency invoicing with Stripe and PayPal, sales tax and VAT handling, and email and SMS reminders for clients anywhere in the world. India and global markets are both supported from day one, not as an afterthought.",
   },
   {
     q: "What happens to my data if I leave?",
