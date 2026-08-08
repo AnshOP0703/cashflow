@@ -57,10 +57,10 @@ export function ChaseEngine() {
                   if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
                   e.preventDefault();
                   const i = order.indexOf(tone);
-                  const next =
+                  const next: Tone =
                     e.key === "ArrowRight"
-                      ? order[(i + 1) % order.length]
-                      : order[(i - 1 + order.length) % order.length];
+                      ? order[(i + 1) % order.length]!
+                      : order[(i - 1 + order.length) % order.length]!;
                   setTone(next);
                   document.getElementById(`tone-tab-${next}`)?.focus();
                 }}
