@@ -55,7 +55,7 @@ export function Pricing() {
               onClick={() => setCurrency(c)}
               className={cn(
                 "rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-                currency === c ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+                currency === c ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground",
               )}
             >
               {c === "INR" ? "INR ₹" : "USD $"}
@@ -69,14 +69,14 @@ export function Pricing() {
           <Reveal as="li" key={t.name} delay={i * 90}>
             <article
               className={cn(
-                "flex h-full flex-col rounded-xl border bg-card p-7",
+                "flex h-full flex-col rounded-lg border bg-card p-7",
                 t.popular ? "border-primary shadow-[var(--shadow-soft)]" : "border-border",
               )}
             >
               <div className="flex items-center justify-between gap-3">
                 <h3 className="text-lg font-semibold">{t.name}</h3>
                 {t.popular && (
-                  <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+                  <span className="rounded-md bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
                     Most popular
                   </span>
                 )}
@@ -86,13 +86,13 @@ export function Pricing() {
                 <span className="ml-1 text-base font-normal text-muted-foreground">/ month</span>
               </p>
               <p className="mt-2 text-sm text-muted-foreground">{t.tagline}</p>
-              <span className="mt-4 w-fit rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold">
+              <span className="mt-4 w-fit rounded-md border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
                 Free during beta
               </span>
               <ul className="mt-6 flex-1 space-y-3 text-muted-foreground">
                 {t.features.map((f) => (
                   <li key={f} className="flex gap-3">
-                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                    <span aria-hidden="true" className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -102,7 +102,7 @@ export function Pricing() {
                 className={cn(
                   "mt-8 rounded-lg px-4 py-3 text-center text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
                   t.popular
-                    ? "bg-primary text-primary-foreground hover:brightness-95"
+                    ? "bg-foreground text-background hover:opacity-90"
                     : "border border-border hover:bg-secondary",
                 )}
               >

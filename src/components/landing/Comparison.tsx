@@ -39,7 +39,7 @@ export function Comparison() {
                   scope="col"
                   className={
                     c === "Tagada"
-                      ? "border-b-2 border-primary bg-primary/10 px-4 py-4 font-semibold"
+                      ? "border-b-2 border-foreground px-4 py-4 font-semibold"
                       : "border-b border-border px-4 py-4 font-medium text-muted-foreground"
                   }
                 >
@@ -59,7 +59,7 @@ export function Comparison() {
                     key={cols[i]}
                     className={
                       i === 0
-                        ? "border-b border-border bg-primary/10 px-4 py-4 font-semibold"
+                        ? "border-b border-border bg-secondary/60 px-4 py-4 font-medium text-foreground"
                         : "border-b border-border px-4 py-4 text-muted-foreground"
                     }
                   >

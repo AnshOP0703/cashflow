@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container-page grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_repeat(3,1fr)]">
         <div className="max-w-xs">
           <p className="text-lg font-semibold tracking-tight">
-            Tagada<span className="text-primary">.</span>
+            Tagada
           </p>
           <p className="mt-3 leading-relaxed text-muted-foreground">
             Invoicing that chases unpaid invoices for you, in India and worldwide.

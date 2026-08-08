@@ -36,7 +36,7 @@ export function WaitlistForm({
           "rounded-lg border px-4 py-3 text-sm font-medium",
           onAccent
             ? "border-ink/20 bg-ink text-ink-foreground"
-            : "border-primary/40 bg-primary/10 text-foreground",
+            : "border-border bg-secondary text-foreground",
         )}
       >
         You're on the list. We'll email you when Tagada opens up.
@@ -70,8 +70,8 @@ export function WaitlistForm({
         <button
           type="submit"
           className={cn(
-            "h-12 shrink-0 rounded-lg px-6 text-base font-semibold transition-transform outline-none",
-            "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.99]",
+            "h-12 shrink-0 rounded-lg px-6 text-base font-semibold transition outline-none",
+            "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
             onAccent
               ? "bg-ink text-ink-foreground hover:bg-ink/90 focus-visible:ring-ink"
               : "bg-primary text-primary-foreground hover:brightness-95 focus-visible:ring-ring",

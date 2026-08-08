@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section id="top" className="container-page grid gap-14 pt-14 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-24 lg:pb-28">
       <Reveal className="max-w-xl">
-        <p className="text-sm font-medium tracking-tight text-primary">
+        <p className="text-sm font-medium tracking-tight text-muted-foreground">
           Invoicing + collections for people who hate both
         </p>
         <h1 className="mt-4 text-[2.5rem] leading-[1.02] font-semibold sm:text-6xl lg:text-[4.25rem]">
@@ -31,14 +31,14 @@ export function Hero() {
       </Reveal>
 
       <Reveal delay={120} className="lg:pl-6">
-        <div className="rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-7">
+        <div className="rounded-lg border border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-7">
           <article aria-label="Example overdue invoice">
             <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border pb-4">
               <div>
                 <p className="text-xs tracking-wide text-muted-foreground uppercase">Invoice #0042</p>
                 <p className="mt-1 text-2xl font-semibold">₹48,000</p>
               </div>
-              <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold text-foreground">
+              <span className="rounded-md border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
                 12 days overdue
               </span>
             </div>

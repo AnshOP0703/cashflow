@@ -32,7 +32,7 @@ export function Nav() {
           href="#top"
           className="text-lg font-semibold tracking-tight focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
         >
-          Tagada<span className="text-primary">.</span>
+          Tagada
         </a>
         <div className="flex items-center gap-1 sm:gap-6">
           <ul className="hidden items-center gap-6 text-sm text-muted-foreground sm:flex">
