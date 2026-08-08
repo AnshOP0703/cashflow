@@ -1,24 +1,99 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/landing/Nav";
+import { Hero } from "@/components/landing/Hero";
+import { ProblemStrip } from "@/components/landing/ProblemStrip";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { ChaseEngine } from "@/components/landing/ChaseEngine";
+import { Features } from "@/components/landing/Features";
+import { Markets } from "@/components/landing/Markets";
+import { Comparison } from "@/components/landing/Comparison";
+import { Testimonials } from "@/components/landing/Testimonials";
+import { Pricing } from "@/components/landing/Pricing";
+import { Faq, faqs } from "@/components/landing/Faq";
+import { FinalCta } from "@/components/landing/FinalCta";
+import { Footer } from "@/components/landing/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Tagada — Invoicing that chases your unpaid invoices for you";
+const DESCRIPTION =
+  "Tagada sends your invoice, then chases it over email, WhatsApp, and SMS until you get paid. Built for India and global small businesses.";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: "/og-image.png" },
+    ],
+    links: [{ rel: "canonical", href: "https://tagada.app/" }],
+  }),
+  component: Landing,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const jsonLd = () => [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Tagada",
+    url: "https://tagada.app/",
+    description:
+      "Tagada is an invoicing tool that automatically chases unpaid invoices so small businesses get paid faster.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Tagada",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description: DESCRIPTION,
+    offers: [
+      { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
+      { "@type": "Offer", name: "Free", price: "0", priceCurrency: "INR" },
+      { "@type": "Offer", name: "Pro", price: "19", priceCurrency: "USD" },
+      { "@type": "Offer", name: "Pro", price: "799", priceCurrency: "INR" },
+      { "@type": "Offer", name: "Business", price: "49", priceCurrency: "USD" },
+      { "@type": "Offer", name: "Business", price: "1999", priceCurrency: "INR" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+
+function Landing() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }}
       />
-    </div>
+      <Nav />
+      <main>
+        <Hero />
+        <ProblemStrip />
+        <HowItWorks />
+        <ChaseEngine />
+        <Features />
+        <Markets />
+        <Comparison />
+        <Testimonials />
+        <Pricing />
+        <Faq />
+        <FinalCta />
+      </main>
+      <Footer />
+    </>
   );
 }
