@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { CtaLink } from "./Cta";
 
 const cols = ["Tagada", "Zoho Invoice", "Wave", "Spreadsheets"];
 
@@ -6,6 +7,7 @@ const rows: { label: string; values: string[] }[] = [
   { label: "Automated escalating reminders", values: ["Built-in, tone-based", "Basic reminders", "Basic reminders", "No"] },
   { label: "WhatsApp follow-ups", values: ["Yes", "Add-on / limited", "No", "Manual"] },
   { label: "Auto-reconciliation", values: ["Yes", "Yes", "Yes (US/CA banks)", "Manual"] },
+  { label: "Client payment scores", values: ["Yes", "No", "No", "No"] },
   { label: "Setup time", values: ["Under 5 minutes", "An afternoon", "About an hour", "Depends on your patience"] },
   { label: "Accountant required", values: ["No", "Helpful", "No", "Eventually"] },
   { label: "Price", values: ["Free during beta", "From ₹749 / $15", "Free core plan", "Free, plus your weekends"] },
@@ -39,7 +41,7 @@ export function Comparison() {
                   scope="col"
                   className={
                     c === "Tagada"
-                      ? "border-b-2 border-foreground px-4 py-4 font-semibold"
+                      ? "border-b-2 border-primary px-4 py-4 font-semibold"
                       : "border-b border-border px-4 py-4 font-medium text-muted-foreground"
                   }
                 >
@@ -59,7 +61,7 @@ export function Comparison() {
                     key={cols[i]}
                     className={
                       i === 0
-                        ? "border-b border-border bg-secondary/60 px-4 py-4 font-medium text-foreground"
+                        ? "border-b border-border bg-card px-4 py-4 text-foreground"
                         : "border-b border-border px-4 py-4 text-muted-foreground"
                     }
                   >
@@ -70,6 +72,9 @@ export function Comparison() {
             ))}
           </tbody>
         </table>
+      </Reveal>
+      <Reveal delay={140}>
+        <CtaLink className="mt-10" label="Get early access" />
       </Reveal>
     </section>
   );

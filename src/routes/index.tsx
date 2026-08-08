@@ -9,6 +9,14 @@ import { Markets } from "@/components/landing/Markets";
 import { Comparison } from "@/components/landing/Comparison";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { Pricing } from "@/components/landing/Pricing";
+import { WhoItsFor } from "@/components/landing/WhoItsFor";
+import { ClientScores } from "@/components/landing/ClientScores";
+import { Recurring } from "@/components/landing/Recurring";
+import { Calculator } from "@/components/landing/Calculator";
+import { Integrations } from "@/components/landing/Integrations";
+import { Security } from "@/components/landing/Security";
+import { FounderNote } from "@/components/landing/FounderNote";
+import { MobileCtaBar } from "@/components/landing/MobileCtaBar";
 import { Faq, faqs } from "@/components/landing/Faq";
 import { FinalCta } from "@/components/landing/FinalCta";
 import { Footer } from "@/components/landing/Footer";
@@ -21,6 +29,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
+      { name: "theme-color", content: "#0B0B0C" },
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
@@ -83,17 +92,25 @@ function Landing() {
       <main>
         <Hero />
         <ProblemStrip />
+        <WhoItsFor />
         <HowItWorks />
         <ChaseEngine />
+        <ClientScores />
+        <Recurring />
         <Features />
+        <Calculator />
         <Markets />
+        <Integrations />
         <Comparison />
+        <Security />
+        <FounderNote />
         <Testimonials />
         <Pricing />
         <Faq />
         <FinalCta />
       </main>
       <Footer />
+      <MobileCtaBar />
     </>
   );
 }
