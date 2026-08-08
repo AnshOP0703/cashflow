@@ -27,7 +27,7 @@ export function ChaseEngine() {
     <section aria-labelledby="chase-heading" className="border-y border-border bg-ink py-20 text-ink-foreground sm:py-28">
       <div className="container-page grid gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal className="max-w-xl">
-          <p className="text-sm font-medium text-primary">The chase engine</p>
+          <p className="text-sm font-medium text-ink-foreground/60">The chase engine</p>
           <h2 id="chase-heading" className="mt-4 text-4xl font-semibold sm:text-6xl">
             Politeness that escalates.
           </h2>
@@ -65,9 +65,9 @@ export function ChaseEngine() {
                   document.getElementById(`tone-tab-${next}`)?.focus();
                 }}
                 className={cn(
-                  "rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none",
+                  "rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-ink-foreground/40 focus-visible:outline-none",
                   tone === t
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-ink-foreground text-ink"
                     : "text-ink-foreground/70 hover:text-ink-foreground",
                 )}
               >
@@ -80,7 +80,7 @@ export function ChaseEngine() {
             id="tone-panel"
             role="tabpanel"
             aria-labelledby={`tone-tab-${tone}`}
-            className="mt-5 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/[0.04] p-6"
+            className="mt-5 rounded-lg border border-ink-foreground/15 bg-ink-foreground/[0.04] p-6"
           >
             <p className="text-xs tracking-wide text-ink-foreground/50 uppercase">Preview</p>
             <p className="mt-3 font-semibold">{tones[tone].subject}</p>

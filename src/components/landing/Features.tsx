@@ -21,8 +21,8 @@ export function Features() {
       <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f, i) => (
           <Reveal as="li" key={f.title} delay={(i % 3) * 80}>
-            <article className="h-full rounded-xl border border-border bg-card p-6">
-              <f.icon aria-hidden="true" className="size-5 text-primary" />
+            <article className="h-full rounded-lg border border-border bg-card p-6">
+              <f.icon aria-hidden="true" className="size-5 text-muted-foreground" />
               <h3 className="mt-4 font-semibold">{f.title}</h3>
               <p className="mt-1.5 leading-relaxed text-muted-foreground">{f.body}</p>
             </article>

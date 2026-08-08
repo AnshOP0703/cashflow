@@ -37,7 +37,7 @@ export function Testimonials() {
         <ul className="mt-12 grid gap-4 md:grid-cols-3">
           {quotes.map((q, i) => (
             <Reveal as="li" key={q.name} delay={i * 90}>
-              <figure className="flex h-full flex-col justify-between rounded-xl border border-border bg-card p-6">
+              <figure className="flex h-full flex-col justify-between rounded-lg border border-border bg-card p-6">
                 <blockquote className="leading-relaxed">"{q.quote}"</blockquote>
                 <figcaption className="mt-6 text-sm text-muted-foreground">
                   <span className="font-semibold text-foreground">{q.name}</span> — {q.role},{" "}

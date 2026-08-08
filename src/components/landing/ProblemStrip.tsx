@@ -17,8 +17,8 @@ export function ProblemStrip() {
         <ul className="grid gap-6 sm:grid-cols-3">
           {stats.map((s, i) => (
             <Reveal as="li" key={s.value} delay={i * 90}>
-              <div className="h-full rounded-xl border border-border bg-card p-6">
-                <p className="text-3xl font-semibold tracking-tight text-primary">{s.value}</p>
+              <div className="h-full rounded-lg border border-border bg-card p-6">
+                <p className="text-3xl font-semibold tracking-tight text-foreground">{s.value}</p>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{s.copy}</p>
               </div>
             </Reveal>
