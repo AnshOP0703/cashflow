@@ -1,0 +1,44 @@
+---
+description: Design system — dark theme, tokens, typography
+globs: ["**/*.tsx", "**/*.css"]
+alwaysApply: true
+---
+
+# Design system
+
+Dark, minimal, editorial. Reference points: Linear, Vercel dashboard, Mercury.
+A financial tool — precise and quiet, never playful.
+
+## Tokens (CSS variables in globals.css, mapped in tailwind.config.ts)
+--bg: #0A0A0A            --surface: #121212
+--surface-raised: #171717 --surface-hover: #1C1C1C
+--border: #222222        --border-strong: #2E2E2E
+--text: #EDEDED          --text-muted: #9E9E9E   --text-faint: #6B6B6B
+--accent: #E8890C        --accent-hover: #F59E1B
+--accent-fg: #0A0A0A     --accent-subtle: rgba(232,137,12,0.10)
+--danger: #E5484D        --warn: #F5A623  --success: #30A46C  --info: #5B8DEF
+
+NEVER use raw hex in components. Tokens only.
+
+## Rules
+- The accent appears fewer than six times per screen. Overdue amounts use
+  --danger, not accent. Accent is for actions; red is for problems.
+- Inter via next/font. Weights 400, 500, 600 only.
+- Page title 20/600/-0.02em. Body 14/400. Table cell 13/400.
+  Label 12/500/uppercase/0.04em. Metric 28/600/tabular-nums.
+- ALL numbers use font-variant-numeric: tabular-nums.
+- Currency: Intl.NumberFormat('en-IN') for INR — lakh grouping (₹4,82,000),
+  not thousands. Never abbreviate in tables.
+- 240px sidebar, content max-width 1400px, 8px spacing scale, 6px radius
+  (8px on modals). Table rows 44px, 12px horizontal cell padding.
+- Motion: 150ms ease-out on hover/focus, 200ms on panel slide. Nothing else.
+- Icons: Lucide, thin stroke, 16px, --text-muted, never accent-colored.
+
+## Never use
+Gradients. Glassmorphism or backdrop blur. Colored glows. Emoji as icons.
+Filled or duotone icons. More than one accent color. Decorative dividers.
+Pill badges scattered through copy. Animated borders. Anything that exists
+purely to fill space.
+
+Test: if a screen could be a page in a well-designed annual report, it's
+right. If it looks like a SaaS template, strip it back.
