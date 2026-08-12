@@ -1,81 +1,82 @@
-import { Reveal } from "./Reveal";
-import { CtaLink } from "./Cta";
+import { useInView } from "@/hooks/use-in-view";
 
-const cols = ["Tagada", "Zoho Invoice", "Wave", "Spreadsheets"];
-
-const rows: { label: string; values: string[] }[] = [
-  { label: "Automated escalating reminders", values: ["Built-in, tone-based", "Basic reminders", "Basic reminders", "No"] },
-  { label: "WhatsApp follow-ups", values: ["Yes", "Add-on / limited", "No", "Manual"] },
-  { label: "Auto-reconciliation", values: ["Yes", "Yes", "Yes (US/CA banks)", "Manual"] },
-  { label: "Client payment scores", values: ["Yes", "No", "No", "No"] },
-  { label: "Setup time", values: ["Under 5 minutes", "An afternoon", "About an hour", "Depends on your patience"] },
-  { label: "Accountant required", values: ["No", "Helpful", "No", "Eventually"] },
-  { label: "Price", values: ["Free during beta", "From ₹749 / $15", "Free core plan", "Free, plus your weekends"] },
-];
+const withoutNodes = [0, 16.6, 33, 50, 66, 100];
+const withNodes = [0, 33, 66, 100];
 
 export function Comparison() {
-  return (
-    <section aria-labelledby="compare-heading" className="container-page py-20 sm:py-28">
-      <Reveal>
-        <h2 id="compare-heading" className="max-w-2xl text-3xl font-semibold sm:text-5xl">
-          How Tagada compares.
-        </h2>
-        <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-          Every tool below creates a decent invoice. Tagada is the one built to collect it.
-        </p>
-      </Reveal>
+  const { ref, inView } = useInView<HTMLElement>(0.35);
 
-      <Reveal delay={100} className="mt-10 overflow-x-auto">
-        <table className="w-full min-w-[720px] border-collapse text-left text-sm">
-          <caption className="sr-only">
-            Feature comparison of Tagada, Zoho Invoice, Wave, and spreadsheets
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col" className="w-56 border-b border-border py-4 pr-4 font-medium text-muted-foreground">
-                Feature
-              </th>
-              {cols.map((c) => (
-                <th
-                  key={c}
-                  scope="col"
-                  className={
-                    c === "Tagada"
-                      ? "border-b-2 border-primary px-4 py-4 font-semibold"
-                      : "border-b border-border px-4 py-4 font-medium text-muted-foreground"
-                  }
-                >
-                  {c}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <tr key={r.label}>
-                <th scope="row" className="border-b border-border py-4 pr-4 font-medium">
-                  {r.label}
-                </th>
-                {r.values.map((v, i) => (
-                  <td
-                    key={cols[i]}
-                    className={
-                      i === 0
-                        ? "border-b border-border bg-card px-4 py-4 text-foreground"
-                        : "border-b border-border px-4 py-4 text-muted-foreground"
-                    }
-                  >
-                    {v}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Reveal>
-      <Reveal delay={140}>
-        <CtaLink className="mt-10" label="Get early access" />
-      </Reveal>
+  return (
+    <section
+      ref={ref}
+      aria-labelledby="problem-heading"
+      className="mx-auto max-w-[1000px] px-8 py-[120px]"
+    >
+      <h2 id="problem-heading" className="text-[44px] leading-[1.1] font-[650] tracking-[-0.02em]">
+        Getting paid shouldn't
+        <br />
+        <span className="text-ink-soft">require chasing.</span>
+      </h2>
+
+      <div className="mt-14">
+        <div className="text-xs font-bold tracking-[0.08em] text-ink-faint">WITHOUT TAGADA</div>
+        <div className="relative mt-7 h-0.5 bg-line">
+          <div
+            className="absolute top-0 left-0 h-full bg-line-dim"
+            style={{ width: inView ? "66%" : "0%", transition: "width 1.1s ease" }}
+          />
+          {withoutNodes.map((pct) => (
+            <div
+              key={pct}
+              className="absolute -top-[5px] h-3 w-3 rounded-full border-2 border-line-dim bg-surface"
+              style={{ left: `${pct}%` }}
+            />
+          ))}
+        </div>
+        <div className="mt-3.5 flex justify-between text-[13px] text-ink-faint">
+          <span className="font-semibold text-ink-secondary">Invoice sent</span>
+          <span>7 days</span>
+          <span className="font-semibold text-ink-secondary">Reminder</span>
+          <span>14 days</span>
+          <span className="font-semibold text-ink-secondary">WhatsApp</span>
+          <span>Still waiting</span>
+        </div>
+      </div>
+
+      <div className="mt-9 rounded-[20px] border border-line bg-surface p-9">
+        <div className="text-xs font-bold tracking-[0.08em] text-brand-deep">WITH TAGADA</div>
+        <div className="relative mt-7 h-[3px] rounded-full bg-line">
+          <div
+            className="absolute top-0 left-0 h-full rounded-full"
+            style={{
+              width: inView ? "100%" : "0%",
+              background: "linear-gradient(90deg, var(--brand), var(--brand-deep))",
+              transition: "width 1.4s cubic-bezier(.2,.7,.3,1)",
+            }}
+          />
+          {withNodes.map((pct, i) => (
+            <div
+              key={pct}
+              className="absolute -top-1.5 h-3.5 w-3.5 rounded-full"
+              style={{
+                left: `calc(${pct}% - 7px)`,
+                background: inView ? "var(--brand)" : "var(--line)",
+                transition: "background .3s ease, transform .3s ease",
+                transitionDelay: `${i * 0.15}s`,
+              }}
+            />
+          ))}
+        </div>
+        <div className="mt-3.5 flex justify-between text-sm font-semibold text-ink">
+          <span>Invoice sent</span>
+          <span>Reminder</span>
+          <span>WhatsApp</span>
+          <span className="text-brand-deep">Paid ✓</span>
+        </div>
+        <p className="mt-5 text-[15px] text-ink-muted">
+          Same invoice. No calendar reminders, no awkward messages, no spreadsheet.
+        </p>
+      </div>
     </section>
   );
 }

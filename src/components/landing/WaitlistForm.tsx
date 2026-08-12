@@ -1,24 +1,12 @@
 import { useState, type FormEvent } from "react";
-import { cn } from "@/lib/utils";
+import { EARLY_ACCESS_INPUT_ID } from "./cta";
 
 // TODO(backend): wire this to Lovable Cloud (Supabase) — insert { email } into a
 // `waitlist` table here. Until then submissions are kept in local state + logged.
-export function WaitlistForm({
-  variant = "dark",
-  id = "waitlist",
-  submitLabel = "Join the waitlist",
-  microcopy = "Free during beta. No card required.",
-}: {
-  variant?: "dark" | "onAccent";
-  id?: string;
-  submitLabel?: string;
-  microcopy?: string | null;
-}) {
+export function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
-
-  const onAccent = variant === "onAccent";
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -36,12 +24,7 @@ export function WaitlistForm({
     return (
       <p
         role="status"
-        className={cn(
-          "rounded-lg border px-4 py-3 text-sm",
-          onAccent
-            ? "border-background/25 bg-background text-foreground"
-            : "border-border bg-card text-foreground",
-        )}
+        className="mx-auto mt-8 w-fit rounded-[10px] border border-slate-line bg-slate-raised px-[18px] py-3.5 text-sm text-on-slate"
       >
         You're on the list. We'll email you when Tagada opens up.
       </p>
@@ -49,57 +32,32 @@ export function WaitlistForm({
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="w-full">
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <label htmlFor={`${id}-email`} className="sr-only">
+    <form onSubmit={onSubmit} noValidate className="mt-8">
+      <div className="flex justify-center gap-2.5 max-[520px]:flex-col max-[520px]:items-stretch">
+        <label htmlFor={EARLY_ACCESS_INPUT_ID} className="sr-only">
           Email address
         </label>
         <input
-          id={`${id}-email`}
+          id={EARLY_ACCESS_INPUT_ID}
           type="email"
           autoComplete="email"
           placeholder="you@company.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-invalid={!!error}
-          aria-describedby={error ? `${id}-error` : undefined}
-          className={cn(
-            "h-12 w-full flex-1 rounded-lg border px-4 text-base outline-none transition-colors",
-            "focus-visible:ring-2 focus-visible:ring-offset-2",
-            onAccent
-              ? "border-background/25 bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-background focus-visible:ring-offset-primary"
-              : "border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-ring focus-visible:ring-offset-background",
-          )}
+          aria-describedby={error ? "waitlist-error" : undefined}
+          className="w-[260px] rounded-[10px] border border-slate-input bg-slate-raised px-[18px] py-3.5 text-sm text-on-slate placeholder:text-on-slate-dim focus-visible:border-brand focus-visible:outline-none max-[520px]:w-full"
         />
         <button
           type="submit"
-          className={cn(
-            "h-12 shrink-0 rounded-lg px-7 text-base font-semibold transition outline-none",
-            "focus-visible:ring-2 focus-visible:ring-offset-2",
-            onAccent
-              ? "bg-background text-foreground hover:bg-background/90 focus-visible:ring-background focus-visible:ring-offset-primary"
-              : "bg-primary text-primary-foreground hover:-translate-y-px hover:brightness-110 focus-visible:ring-ring focus-visible:ring-offset-background",
-          )}
+          className="rounded-[10px] bg-brand px-6 py-3.5 text-sm font-semibold text-white transition-transform duration-150 hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
-          {submitLabel}
+          Get early access
         </button>
       </div>
       {error && (
-        <p
-          id={`${id}-error`}
-          className={cn("mt-2 text-sm", onAccent ? "text-primary-foreground" : "text-destructive")}
-        >
+        <p id="waitlist-error" className="mt-3 text-sm text-on-slate-muted">
           {error}
-        </p>
-      )}
-      {microcopy && (
-        <p
-          className={cn(
-            "mt-3 text-sm",
-            onAccent ? "text-primary-foreground/80" : "text-muted-foreground",
-          )}
-        >
-          {microcopy}
         </p>
       )}
     </form>

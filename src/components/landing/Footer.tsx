@@ -1,43 +1,60 @@
 const columns = [
-  { title: "Product", links: ["How it works", "Pricing", "FAQ"] },
-  { title: "Company", links: ["About", "Blog", "Contact"] },
-  { title: "Legal", links: ["Privacy Policy", "Terms", "Security"] },
+  {
+    title: "PRODUCT",
+    links: [
+      { href: "#how", label: "How it works" },
+      { href: "#pricing", label: "Pricing" },
+      { href: "#faq", label: "FAQ" },
+    ],
+  },
+  {
+    title: "COMPANY",
+    links: [
+      { href: "#", label: "About" },
+      { href: "#", label: "Contact" },
+    ],
+  },
+  {
+    title: "LEGAL",
+    links: [
+      { href: "#", label: "Privacy" },
+      { href: "#", label: "Terms" },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background py-14">
-      <div className="container-page grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_repeat(3,1fr)]">
-        <div className="max-w-xs">
-          <p className="text-lg font-semibold tracking-tight">
-            Tagada
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Invoicing that chases unpaid invoices for you, in India and worldwide.
+    <footer className="border-t border-line px-8 py-14">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-[1.4fr_1fr_1fr_1fr] gap-8 max-[700px]:grid-cols-2 max-[420px]:grid-cols-1">
+        <div>
+          <div className="text-base font-semibold">Tagada</div>
+          <p className="mt-2 max-w-[260px] text-sm text-ink-faint">
+            Invoicing that chases unpaid revenue for you.
           </p>
         </div>
-        {columns.map((col) => (
-          <nav key={col.title} aria-label={col.title}>
-            <h2 className="text-sm font-semibold">{col.title}</h2>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              {col.links.map((l) => (
-                <li key={l}>
-                  {/* TODO: replace placeholder hrefs with real pages */}
-                  <a
-                    href="#"
-                    className="rounded transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-                  >
-                    {l}
-                  </a>
-                </li>
+
+        {columns.map((column) => (
+          <div key={column.title}>
+            <div className="mb-3 text-xs font-bold tracking-[0.06em] text-ink-faint">
+              {column.title}
+            </div>
+            <div className="flex flex-col gap-2 text-sm">
+              {column.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-brand-deep transition-colors hover:text-brand"
+                >
+                  {link.label}
+                </a>
               ))}
-            </ul>
-          </nav>
+            </div>
+          </div>
         ))}
       </div>
-      <div className="container-page mt-12 border-t border-border pt-6 text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} Tagada. All rights reserved.</p>
-      </div>
+
+      <div className="mx-auto mt-10 max-w-[1280px] text-[13px] text-ink-ghost">© 2026 Tagada</div>
     </footer>
   );
 }

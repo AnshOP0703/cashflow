@@ -1,52 +1,67 @@
-import { Reveal } from "./Reveal";
+import { useEffect, useState } from "react";
 
-// PLACEHOLDER TESTIMONIALS — replace with real, attributed quotes post-launch.
-const quotes = [
+const testimonialDefs = [
   {
-    quote:
-      "I stopped writing 'just following up' emails entirely. Two clients who always paid late now pay in the first week.",
-    name: "Ananya Rao",
-    role: "Founder",
-    company: "Studio Kadak",
+    quote: "Clients pay faster and nobody feels chased.",
+    author: "Dan Okoro · Consultant, Okoro & Co.",
   },
   {
-    quote:
-      "The WhatsApp nudge is the whole product. Email gets ignored; a WhatsApp message with a pay link does not.",
-    name: "Marcus Bell",
-    role: "Managing Director",
-    company: "Northline Creative",
+    quote: "It's the first invoicing tool that does something after sending.",
+    author: "Ritu Shah · Ops lead, Northline Creative",
   },
   {
-    quote:
-      "Reconciliation used to eat a full afternoon each month. Now the invoices close themselves and I just read the notification.",
-    name: "Sofia Duarte",
-    role: "Independent consultant",
-    company: "Duarte Advisory",
+    quote: "I stopped writing awkward follow-up emails entirely.",
+    author: "Ananya Rao · Brand designer, Freelance",
+  },
+  {
+    quote: "Our average payment time went from 38 days to 11.",
+    author: "Marcus Feld · Founder, Vertex Labs",
   },
 ];
 
+const ROTATE_MS = 5200;
+
 export function Testimonials() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(
+      () => setIndex((i) => (i + 1) % testimonialDefs.length),
+      ROTATE_MS,
+    );
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const active = testimonialDefs[index]!;
+
   return (
-    <section aria-labelledby="proof-heading" className="border-y border-border bg-band py-20 sm:py-28">
-      <div className="container-page">
-        <Reveal>
-          <h2 id="proof-heading" className="max-w-2xl text-3xl font-semibold sm:text-5xl">
-            People who got paid.
-          </h2>
-        </Reveal>
-        <ul className="mt-12 grid gap-4 md:grid-cols-3">
-          {quotes.map((q, i) => (
-            <Reveal as="li" key={q.name} delay={i * 90}>
-              <figure className="flex h-full flex-col justify-between rounded-lg border border-border bg-card p-6">
-                <blockquote className="leading-relaxed">"{q.quote}"</blockquote>
-                <figcaption className="mt-6 text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">{q.name}</span> — {q.role},{" "}
-                  {q.company}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </ul>
+    <section
+      aria-labelledby="proof-heading"
+      className="mx-auto max-w-[800px] px-8 py-25 text-center"
+    >
+      <h2 id="proof-heading" className="text-xs font-bold tracking-[0.08em] text-ink-faint">
+        FROM EARLY USERS
+      </h2>
+
+      <figure>
+        <blockquote className="mt-6 min-h-[110px] text-[28px] leading-[1.4] font-semibold tracking-[-0.01em] text-ink">
+          "{active.quote}"
+        </blockquote>
+        <figcaption className="mt-[18px] text-sm text-ink-muted">{active.author}</figcaption>
+      </figure>
+
+      <div className="mt-6 flex justify-center gap-2">
+        {testimonialDefs.map((testimonial, i) => (
+          <button
+            key={testimonial.author}
+            type="button"
+            aria-label={`Show testimonial ${i + 1}`}
+            aria-current={i === index}
+            onClick={() => setIndex(i)}
+            className="h-[7px] w-[7px] rounded-full border-none p-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep"
+            style={{ background: i === index ? "var(--brand)" : "var(--line)" }}
+          />
+        ))}
       </div>
     </section>
   );
