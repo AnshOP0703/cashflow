@@ -1,65 +1,49 @@
-import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { focusEarlyAccess } from "./cta";
 
 const links = [
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#features", label: "Features" },
+  { href: "#how", label: "How it works" },
+  { href: "#product", label: "Product" },
   { href: "#pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
 ];
 
 export function Nav() {
-  const [solid, setSolid] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 transition-colors duration-300",
-        solid ? "border-b border-border bg-background/85 shadow-[var(--shadow-soft)] backdrop-blur" : "bg-transparent",
-      )}
-    >
+    <header className="sticky top-0 z-50 border-b border-line bg-[rgba(247,247,243,0.82)] backdrop-blur-[10px]">
       <nav
         aria-label="Primary"
-        className="container-page flex h-16 items-center justify-between gap-4"
+        className="mx-auto flex max-w-[1280px] items-center justify-between px-8 py-[18px]"
       >
-        <a
-          href="#top"
-          className="text-lg font-semibold tracking-tight focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-        >
-          Tagada
+        <a href="#top" className="flex items-center gap-2.5">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-ink text-sm font-bold text-white">
+            T
+          </span>
+          <span className="text-[17px] font-semibold tracking-[-0.01em] text-ink">Tagada</span>
         </a>
-        <div className="flex items-center gap-1 sm:gap-6">
-          <ul className="hidden items-center gap-6 text-sm text-muted-foreground sm:flex">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="rounded transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a
-            href="#waitlist"
-            className="hidden rounded px-2 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:inline-block"
-          >
+
+        <div className="flex items-center gap-8 max-[760px]:hidden">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm text-ink-secondary transition-colors hover:text-brand"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4">
+          <a href="#" className="text-sm text-ink-secondary transition-colors hover:text-brand">
             Sign in
           </a>
-          <a
-            href="#waitlist"
-            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:-translate-y-px hover:brightness-110 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+          <button
+            type="button"
+            onClick={focusEarlyAccess}
+            className="rounded-[10px] bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-transform duration-150 hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep"
           >
             Get early access
-          </a>
+          </button>
         </div>
       </nav>
     </header>

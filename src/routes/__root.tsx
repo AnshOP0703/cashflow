@@ -77,29 +77,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tagada — Invoicing that chases your unpaid invoices for you" },
+      { title: "Tagada — Automated Invoicing & Payment Collection" },
       {
         name: "description",
         content:
-          "Tagada sends your invoice, then chases it until you get paid. Email, WhatsApp, and SMS follow-ups on autopilot.",
+          "Tagada sends invoices, automatically follows up with clients, and stops when you're paid. Automate payment reminders across email, WhatsApp and SMS.",
       },
       { name: "author", content: "Tagada" },
-      { property: "og:title", content: "Tagada — Invoicing that chases your unpaid invoices" },
+      { property: "og:title", content: "Tagada — Automated Invoicing & Payment Collection" },
       {
         property: "og:description",
-        content: "Tagada chases unpaid invoices over email, WhatsApp, and SMS until you get paid.",
+        content:
+          "Send the invoice. We chase the payment. Automated reminders across email, WhatsApp and SMS.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
-      },
       {
         rel: "stylesheet",
         href: appCss,
